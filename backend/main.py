@@ -10,10 +10,8 @@ import io
 app = FastAPI()
 
 # CORS
-origins = [
-    "http://localhost:3000",
-    "https://vijayarvind10.github.io",
-]
+# For a public prototype, we can be more permissive or add the specific cloud domain later.
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,

@@ -46,8 +46,9 @@ function App() {
     formData.append('file', file)
 
     try {
-      // NOTE: For GitHub Pages demo to work, the user must run the backend locally on port 8000.
-      const response = await axios.post('http://localhost:8000/analyze', formData, {
+      // Use the environment variable if available, otherwise fallback to localhost
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const response = await axios.post(`${apiUrl}/analyze`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
